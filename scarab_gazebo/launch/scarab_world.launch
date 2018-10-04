@@ -17,20 +17,22 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <param name="robot_description"
-         command="$(find xacro)/xacro.py '$(find scarab_description)/urdf/scarab.xacro'" />
-
   <node name="levine_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
         args="-sdf -model levine -file $(find scarab_gazebo)/models/levine/model.sdf"/>
 
   <group ns="$(arg ns)">
-    <param name="tf_prefix" value="" />
+    <param name="tf_prefix" value="$(arg ns)"/>
+    <param name="robot_description"
+           command="$(find xacro)/xacro.py '$(find scarab_description)/urdf/scarab.xacro'" />
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"
           output="screen"
-          args="-urdf -model scarab -param /robot_description -x 0 -y 0"/>
+          args="-urdf -model scarab -param robot_description -x 0 -y 0"/>
     <node name="state_publisher" type="robot_state_publisher"
           pkg="robot_state_publisher" output="screen" >
       <param name="whitelist" value="base,camera,laser,hokuyo" />
+    </node>
+    <node name="joint_publisher" type="joint_state_publisher"
+          pkg="joint_state_publisher" output="screen">
     </node>
   </group>
 
