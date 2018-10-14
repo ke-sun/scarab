@@ -88,7 +88,7 @@ public:
     if (motor_odom_) {
       odom_.twist.twist.linear.x = motor_odom_->twist.twist.linear.x;
     } else {
-      ROS_ERROR("No motor odometry");
+      //ROS_ERROR("No motor odometry");
     }
 
     podom_.publish(odom_);
