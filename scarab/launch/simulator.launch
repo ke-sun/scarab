@@ -1,0 +1,19 @@
+<launch>
+  <arg name="agent" default="scarab40"/>
+
+  <!-- Gazebo and Rviz -->
+  <include file="$(find scarab_gazebo)/launch/scarab_world.launch">
+    <arg name="agent" value="$(arg agent)"/>
+  </include>
+
+  <!-- Joystick -->
+  <include file="$(find scarab_twist)/launch/joystick.launch">
+    <arg name="agent" value="$(arg agent)"/>
+  </include>
+
+  <!-- laser pose estimation -->
+  <include file="$(find laser_odom)/launch/laser_pose_estimator.launch">
+    <arg name="agent" value="$(arg agent)"/>
+  </include>
+
+</launch>

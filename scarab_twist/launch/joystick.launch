@@ -1,9 +1,11 @@
 <launch>
 
-  <arg name="agent" default="$(env AGENT)" />
+  <arg name="agent" default="scarab40" />
 
   <group ns="$(arg agent)">
-    <node name="joy" pkg="joy" type="joy_node" />
+    <node name="joy" pkg="joy" type="joy_node">
+      <param name="dev" value="/dev/input/js0"/>
+    </node>
     <node name="joy_to_twist" pkg="scarab_twist" type="joy_to_twist"
           output="screen" >
       <param name="vmax" value="1.0" />

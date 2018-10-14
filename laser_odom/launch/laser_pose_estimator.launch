@@ -1,0 +1,29 @@
+<launch>
+
+  <arg name="agent" default="scarab40" />
+  <arg name="base_frame" default="base_link"/>
+  <arg name="odom_frame" default="odom"/>
+  <arg name="laser_frame" default="laser"/>
+
+  <group ns="$(arg agent)">
+    <node name="laser_odom" pkg="laser_odom" type="laser_odom"
+        output="screen">
+      <param name="base_frame" value="$(arg agent)/$(arg base_frame)" />
+      <param name="odom_frame" value="$(arg agent)/$(arg odom_frame)" />
+      <param name="laser_frame" value="$(arg agent)/$(arg laser_frame)" />
+      <param name="laser_base_frame" value="$(arg agent)/$(arg laser_frame)" />
+      <rosparam>
+        grid_resolution: 0.05
+        sensor_sd: 0.02
+        subsample: 1
+        travel_distance: 0.2
+        travel_angle: 0.034
+        decay_duration: 200
+        decay_step: 40
+        range_x: 0.2
+        range_y: 0.2
+      </rosparam>
+    </node>
+  </group>
+
+</launch>
