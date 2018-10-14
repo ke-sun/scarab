@@ -10,6 +10,7 @@
         </geometry>
         <pose>0 0 0.05 0 -0 0</pose>
       </collision>
+      <!--
       <visual name='Floor_0_Visual'>
         <pose>0 0 0.05 0 -0 0</pose>
         <geometry>
@@ -24,6 +25,7 @@
           </script>
         </material>
       </visual>
+      -->
       <velocity_decay>
         <linear>0</linear>
         <angular>0</angular>
