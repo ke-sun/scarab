@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>motion_primitives</name>
+  <version>0.0.0</version>
+  <description>Define the motion primitives</description>
+
+
+  <author email="sunke.polyu@gmail.com">Ke Sun</author>
+  <maintainer email="sunke.polyu@gmail.com">Ke Sun</maintainer>
+  <license>BSD</license>
+
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>nodelet</depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+
+  <export>
+    <nodelet plugin="${prefix}/nodelets.xml"/>
+  </export>
+
+</package>
